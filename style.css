@@ -1,0 +1,220 @@
+/* ========================================================= */
+/* ESTILOS GLOBALES Y TIPOGRAFÍA */
+/* ========================================================= */
+
+body {
+    background-color: #0d0d0d; /* Negro muy oscuro */
+    color: #e0e0e0; /* Gris claro para texto principal */
+    font-family: 'Georgia', serif; /* Tipografía clásica y seria */
+    line-height: 1.7;
+}
+
+/* Títulos y Énfasis */
+h1, h2, h3, h4, h5 {
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
+    color: #ffc107; /* Amarillo para los títulos (Modernismo) */
+}
+
+.text-warning {
+    color: #ffc107 !important; /* Mantenemos el color de acento */
+}
+
+/* ========================================================= */
+/* CABECERA Y SECCIÓN PRINCIPAL */
+/* ========================================================= */
+
+header {
+    background-color: #000000;
+    border-bottom: 5px solid #ffc107; /* Línea de acento más gruesa */
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.1); /* Sombra sutil */
+    animation: fadeInDown 1s ease-out; /* Animación de entrada */
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lead {
+    color: #aaaaaa; /* Subtítulos en gris */
+    font-style: italic;
+}
+
+/* ========================================================= */
+/* SPLASH SCREEN Y ANIMACIÓN DE INICIO */
+/* ========================================================= */
+
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Fondo puramente negro para más drama */
+    z-index: 1050; 
+    transition: opacity 1.5s ease-out; /* Transición más lenta */
+}
+
+.libro-logo {
+    cursor: pointer;
+    transition: transform 0.6s ease, color 0.6s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.5)); /* Resplandor al logo */
+}
+
+.libro-logo:hover {
+    transform: scale(1.1); /* Escala ligeramente más grande */
+    color: #fff;
+    filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.8));
+}
+
+/* ========================================================= */
+/* TARJETAS DE PERSONAJES (INTERACCIÓN) */
+/* ========================================================= */
+
+.poeta-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    border: 1px solid #333;
+    background-color: #1a1a1a !important; /* Color base oscuro */
+    position: relative;
+    overflow: hidden; /* Para el efecto de brillo */
+}
+
+.poeta-card:hover {
+    transform: scale(1.03); /* Un poco más de zoom */
+    box-shadow: 0 0 25px rgba(255, 193, 7, 0.5), 0 0 10px rgba(255, 255, 255, 0.1); /* Sombra dramática y brillante */
+    border-color: #ffc107;
+}
+
+/* Efecto Brillo (Pseudo-elemento) */
+.poeta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(-30deg);
+    transition: all 0.7s ease;
+}
+
+.poeta-card:hover::before {
+    left: 100%; /* Desliza el brillo al hacer hover */
+}
+
+.poeta-card img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border: 5px solid #ffc107; /* Borde más grueso */
+    transition: transform 0.3s ease;
+}
+
+.poeta-card:hover img {
+    transform: scale(1.05); /* Zoom sutil en la imagen al hacer hover */
+}
+
+/* ========================================================= */
+/* MODAL (Ventana Desplegable) */
+/* ========================================================= */
+
+.modal-content {
+    background-color: #1c1c1c !important; 
+    border: 3px solid #ffc107 !important; /* Borde de acento más notorio */
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.4);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+/* Estilo para los datos curiosos (para el Popover) */
+.dato-curioso-trigger {
+    color: #ffc107;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.dato-curioso-trigger:hover {
+    color: #fff;
+}
+
+/* Fragmento de Obra */
+.blockquote {
+    background-color: #2b2b2b !important;
+    border-left: 5px solid #e0e0e0 !important;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* ========================================================= */
+/* ACORDEÓN (Características y Legado) */
+/* ========================================================= */
+
+.accordion-item {
+    border: 1px solid #444;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.accordion-button.bg-secondary {
+    color: #fff !important;
+    background-color: #1a1a1a !important; /* Oscurecemos el fondo del botón */
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #333333 !important; /* Color al estar abierto */
+    color: #ffc107 !important;
+    box-shadow: inset 0 -3px 0 #ffc107; /* Sombra inferior de acento */
+}
+
+.accordion-body {
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+}
+
+
+/* -------------------------------------- */
+/* ANIMACIÓN FADE-IN PARA EL CONTENIDO (MEJORADA) */
+/* -------------------------------------- */
+
+/* Define la animación */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* Movimiento un poco más amplio */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplica la animación a los elementos dentro del cuerpo del acordeón cuando se muestra */
+.accordion-body .animate-on-show {
+    opacity: 0;
+    animation: fadeInSlide 0.6s ease-out forwards; /* Animación más lenta y suave */
+}
+
+/* Retardos para crear un efecto de cascada */
+.accordion-body .delay-1 {
+    animation-delay: 0.3s; /* Retardo incrementado */
+}
+
+.accordion-body .delay-2 {
+    animation-delay: 0.6s;
+}
+
+/* Bloque de cita en las características */
+.blockquote.text-warning {
+    color: #ffc107 !important;
+    border-left: 5px solid #ffc107 !important;
+    font-style: italic;
+}
